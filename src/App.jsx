@@ -5,7 +5,7 @@ import './App.css'
 import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [question, setQuestion] = useState("")
  async function genAnswer(){
     console.log("loading...")
     const response = await axios (
@@ -14,7 +14,7 @@ function App() {
        , method: "post",
        data : {
         "contents": [{
-    "parts":[{"text": "Explain how AI works"}]
+    "parts":[{"text": question}]
     }]
        }
       }
@@ -26,6 +26,7 @@ function App() {
   return (
     <>
     <h1>CHATBOT AI</h1>
+    <textarea value={question} cols="30" rows="10"></textarea>
     <button onClick={genAnswer}>Generate</button>
     </>
   )
